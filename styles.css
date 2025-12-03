@@ -235,7 +235,3 @@ body {
     font-size: 0.9rem;
   }
 }
-<!-- OVERLAY QUE ACTIVA EL AUDIO -->
-<div id="tapToStart" class="tap-overlay">
-  <p>Toca para entrar 🔊</p>
-</div>
