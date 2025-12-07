@@ -275,3 +275,80 @@ body {
     font-size: 1rem;
   }
 }
+
+/* ===== DESTELLOS DE BRILLO EN TODA LA PANTALLA ===== */
+
+.brillos-container {
+  position: fixed;
+  inset: 0;
+  width: 100vw;
+  height: 100vh;
+  pointer-events: none; /* No bloquea botones ni scroll */
+  z-index: 9999;
+  overflow: hidden;
+}
+
+/* Tamaño general de cada brillo */
+.brillo {
+  position: absolute;
+  width: 60px; /* hazlo más chico o más grande si quieres */
+  height: 60px;
+  opacity: 0;
+  animation: destello 4s infinite ease-in-out;
+}
+
+/* Posiciones distintas + tiempos diferentes */
+.brillo.b1 {
+  top: 10%;
+  left: 20%;
+  animation-delay: 0s;
+}
+
+.brillo.b2 {
+  top: 30%;
+  right: 15%;
+  animation-delay: 1s;
+}
+
+.brillo.b3 {
+  top: 55%;
+  left: 10%;
+  animation-delay: 2s;
+}
+
+.brillo.b4 {
+  top: 65%;
+  right: 25%;
+  animation-delay: 1.5s;
+}
+
+.brillo.b5 {
+  top: 20%;
+  left: 60%;
+  animation-delay: 0.7s;
+}
+
+.brillo.b6 {
+  top: 80%;
+  left: 40%;
+  animation-delay: 2.5s;
+}
+
+/* Animación: aparece, brilla y se apaga */
+@keyframes destello {
+  0% {
+    opacity: 0;
+    transform: scale(0.4) rotate(0deg);
+  }
+  15% {
+    opacity: 1;
+    transform: scale(1) rotate(10deg);
+  }
+  30% {
+    opacity: 0;
+    transform: scale(0.3) rotate(0deg);
+  }
+  100% {
+    opacity: 0;
+  }
+}
