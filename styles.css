@@ -286,10 +286,16 @@ body {
   inset: 0;
   width: 100vw;
   height: 100vh;
-  pointer-events: none;
-  z-index: 0;
+  pointer-events: none;     /* NO recibe clics */
+  z-index: 999;             /* 👈 Ahora queda encima de todo */
   overflow: hidden;
 }
+
+/* Por si acaso, aseguramos que ningún brillo bloquee clics */
+.brillos-container * {
+  pointer-events: none;
+}
+
 
 /* Tamaño general de cada brillo */
 .brillo {
