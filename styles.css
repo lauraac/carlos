@@ -1,220 +1,277 @@
-/* ========== RESETEO BÁSICO ========== */
+/* ======= BASE ======= */
 *,
 *::before,
 *::after {
   box-sizing: border-box;
+}
+
+body {
   margin: 0;
-  padding: 0;
-}
-
-html,
-body {
-  height: 100%;
-}
-
-body {
+  padding: 16px;
+  min-height: 100vh;
   font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI",
     sans-serif;
-  background: #000;
-  color: #f5f5f5;
+  background: radial-gradient(
+    circle at top,
+    #1b1b1b 0%,
+    #020202 55%,
+    #000000 100%
+  );
+  color: #f7f7f7;
   display: flex;
   justify-content: center;
-  align-items: stretch;
-  overflow-y: auto; /* deja hacer scroll */
-  overflow-x: hidden; /* no scroll lateral */
+  align-items: flex-start;
 }
 
-/* Contenedor tipo "celular" */
+/* Contenedor principal */
 .invite-shell {
   width: 100%;
-  max-width: 480px;
-  min-height: 100vh;
-  margin: 0 auto;
-  padding: 8px 0 24px;
+  max-width: 420px;
 }
 
-/* Tarjeta principal */
 .invite {
-  /* deja que crezca lo que necesite */
-  min-height: 100%;
-  border-radius: 18px;
-  background: radial-gradient(circle at top, #222 0, #050505 55%, #000 100%);
-  box-shadow: 0 0 25px rgba(0, 0, 0, 0.8);
-  display: flex;
-  flex-direction: column;
-  /* quita el overflow hidden */
-  /* overflow: hidden;  👈 bórralo */
+  background: radial-gradient(
+    circle at top,
+    #262626 0%,
+    #050505 55%,
+    #000000 100%
+  );
+  border-radius: 24px;
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  box-shadow: 0 0 30px rgba(0, 0, 0, 0.9), 0 0 12px rgba(255, 255, 255, 0.08);
+  padding: 16px;
 }
 
-/* ========== LAYOUT SUPERIOR / INFERIOR ========== */
+/* ======= HERO (video) ======= */
 .hero {
-  flex: 0 0 auto;
-  padding: 10px 10px 4px;
+  margin-bottom: 16px;
 }
 
-.bottom {
-  flex: 1;
-  padding: 4px 10px 10px;
-  display: flex;
-  flex-direction: column;
-  gap: 6px;
-}
-
-/* ========== VIDEO ========== */
-
-.video-wrapper {
-  position: relative;
-  width: 100%;
-  aspect-ratio: 9 / 16;
-  border-radius: 16px;
-  overflow: hidden;
-  background: #111;
-}
-
-/* Intro grande */
 .video-wrapper-main {
-  box-shadow: 0 0 20px rgba(0, 0, 0, 0.9);
+  position: relative;
+  border-radius: 18px;
+  overflow: hidden;
+  box-shadow: 0 0 25px rgba(0, 0, 0, 0.9), 0 0 18px rgba(255, 255, 255, 0.03);
 }
 
-/* Video ocupa todo el contenedor */
-.video-wrapper video {
+.video-wrapper-main video {
+  display: block;
   width: 100%;
-  height: 100%;
-  object-fit: cover;
-  background: #000;
+  height: auto;
 }
 
-/* Overlay de título en el video intro */
+/* Overlay de título sobre el video */
 .hero-overlay {
   position: absolute;
   inset: 0;
   background: linear-gradient(
     to top,
-    rgba(0, 0, 0, 0.9) 0,
-    rgba(0, 0, 0, 0.3) 40%,
-    transparent 100%
+    rgba(0, 0, 0, 0.85) 0%,
+    rgba(0, 0, 0, 0.4) 40%,
+    transparent 80%
   );
   display: flex;
   flex-direction: column;
   justify-content: flex-end;
-  padding: 12px;
-
-  /* 🔑 Esto deja pasar los clics al video */
-  pointer-events: none;
+  padding: 16px;
 }
 
 .hero-title {
-  font-size: 1.5rem;
-  letter-spacing: 0.15em;
+  margin: 0;
+  font-size: 1.6rem;
+  letter-spacing: 0.08em;
   text-transform: uppercase;
-  margin-bottom: 4px;
+  text-shadow: 0 0 8px rgba(0, 0, 0, 0.9), 0 0 10px rgba(255, 255, 255, 0.3);
 }
 
 .hero-subtitle {
-  font-size: 0.78rem;
-  color: #d0d0d0;
+  margin: 4px 0 0;
+  font-size: 0.9rem;
+  opacity: 0.9;
 }
 
-/* ========== INFO + COUNTDOWN ========== */
+/* ======= SECCIÓN INFERIOR ======= */
+.bottom {
+  margin-top: 12px;
+}
 
 .info-countdown {
-  flex: 1;
-  display: grid;
-  grid-template-rows: auto auto 1fr;
-  gap: 4px;
-  font-size: 0.8rem;
-}
-
-/* Bloques de texto */
-.info-block {
-  padding: 6px 8px;
-  border-radius: 10px;
-  background: rgba(10, 10, 10, 0.85);
-  border: 1px solid rgba(255, 255, 255, 0.06);
-}
-
-.info-block h2 {
-  font-size: 0.85rem;
-  text-transform: uppercase;
-  letter-spacing: 0.12em;
-  color: #f9f9f9;
-  margin-bottom: 2px;
-}
-
-.info-block p {
-  line-height: 1.25;
-  color: #d4d4d4;
-}
-
-/* Countdown */
-.countdown-block {
-  padding: 6px 8px 8px;
-  border-radius: 10px;
-  background: radial-gradient(circle at top, #171717 0, #050505 100%);
-  border: 1px solid rgba(255, 255, 255, 0.12);
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
+  gap: 14px;
 }
 
-.countdown-block h2 {
-  font-size: 0.85rem;
+.info-block,
+.countdown-block,
+.map-block {
+  background: linear-gradient(
+    145deg,
+    rgba(255, 255, 255, 0.05),
+    rgba(0, 0, 0, 0.5)
+  );
+  border-radius: 18px;
+  padding: 12px 14px;
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.85);
+  text-align: center;
+}
+
+.info-block h2,
+.countdown-block h2,
+.map-block h2 {
+  margin: 0 0 6px;
+  font-size: 1rem;
+  letter-spacing: 0.08em;
   text-transform: uppercase;
-  letter-spacing: 0.12em;
-  margin-bottom: 4px;
+  color: #f9f9f9;
 }
 
+.info-block p,
+.map-block p,
+.countdown-block p {
+  margin: 0;
+  font-size: 0.9rem;
+  line-height: 1.4;
+  opacity: 0.9;
+}
+
+/* ======= MAPA ======= */
+.map-wrapper {
+  margin-top: 8px;
+  border-radius: 12px;
+  overflow: hidden;
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  box-shadow: 0 0 14px rgba(0, 0, 0, 0.9), 0 0 10px rgba(255, 255, 255, 0.08);
+}
+
+.map-wrapper iframe {
+  width: 100%;
+  height: 190px;
+  border: 0;
+}
+
+/* ======= BOTONES NEGROS BRILLANTES ======= */
+.btn {
+  display: inline-block;
+  margin-top: 10px;
+  padding: 10px 18px;
+  border-radius: 999px;
+  text-decoration: none;
+  font-size: 0.85rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  text-align: center;
+  color: #fdfdfd;
+  background: linear-gradient(145deg, #101010, #000000);
+  border: 1px solid rgba(255, 255, 255, 0.35);
+  position: relative;
+  overflow: hidden;
+  box-shadow: 0 0 14px rgba(0, 0, 0, 0.9), 0 0 12px rgba(255, 255, 255, 0.12);
+  transition: transform 0.15s ease, box-shadow 0.15s ease,
+    border-color 0.15s ease;
+}
+
+/* Brillo superior */
+.btn::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    to bottom,
+    rgba(255, 255, 255, 0.22),
+    transparent 46%
+  );
+  opacity: 0.95;
+  mix-blend-mode: screen;
+  pointer-events: none;
+}
+
+/* Reflejo diagonal animado */
+.btn::after {
+  content: "";
+  position: absolute;
+  top: -50%;
+  left: -60%;
+  width: 40%;
+  height: 200%;
+  background: radial-gradient(
+    circle,
+    rgba(255, 255, 255, 0.4),
+    transparent 60%
+  );
+  transform: rotate(25deg);
+  opacity: 0;
+  transition: opacity 0.2s ease, transform 0.2s ease;
+}
+
+.btn:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 0 16px rgba(255, 255, 255, 0.35), 0 0 22px rgba(0, 0, 0, 1);
+  border-color: rgba(255, 255, 255, 0.85);
+}
+
+.btn:hover::after {
+  opacity: 1;
+  transform: translateX(60%) rotate(25deg);
+}
+
+/* Botón específico de mapa (toque violáceo) */
+.btn-map {
+  border-color: rgba(155, 91, 255, 0.9);
+  text-shadow: 0 0 8px rgba(155, 91, 255, 0.7);
+  box-shadow: 0 0 18px rgba(155, 91, 255, 0.5), 0 0 12px rgba(0, 0, 0, 0.9);
+}
+
+/* ======= RELOJ ======= */
 .countdown {
   display: flex;
   justify-content: space-between;
-  align-items: center;
-  gap: 4px;
-  margin-bottom: 4px;
+  gap: 6px;
+  margin-top: 8px;
 }
 
 .time-box {
   flex: 1;
-  padding: 4px 2px;
-  border-radius: 10px;
-  background: linear-gradient(145deg, #111, #050505);
-  border: 1px solid rgba(255, 255, 255, 0.1);
   text-align: center;
+  padding: 8px 4px;
+  border-radius: 12px;
+  background: radial-gradient(circle at top, #222222 0%, #050505 60%);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.85);
 }
 
 .time-box span {
   display: block;
-  font-size: 1rem;
-  font-variant-numeric: tabular-nums;
+  font-size: 1.1rem;
+  font-weight: 700;
 }
 
 .time-box small {
-  font-size: 0.65rem;
-  text-transform: uppercase;
-  letter-spacing: 0.08em;
-  color: #b0b0b0;
+  font-size: 0.7rem;
+  opacity: 0.8;
 }
 
 .countdown-msg {
-  font-size: 0.7rem;
-  color: #c8c8c8;
+  margin-top: 8px;
+  font-size: 0.85rem;
+  opacity: 0.9;
 }
 
-/* ========== MOBILE FINO ========== */
-@media (max-height: 650px) {
+/* ======= RESPONSIVE CHIQUITO ======= */
+@media (max-width: 360px) {
+  .invite {
+    padding: 12px;
+  }
+
   .hero-title {
-    font-size: 1.3rem;
+    font-size: 1.4rem;
   }
 
-  .hero-subtitle {
-    font-size: 0.7rem;
-  }
-
-  .info-block,
-  .countdown-block {
-    font-size: 0.75rem;
+  .countdown {
+    gap: 4px;
   }
 
   .time-box span {
-    font-size: 0.9rem;
+    font-size: 1rem;
   }
 }
